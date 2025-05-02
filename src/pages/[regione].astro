@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ChartJS from '../components/ChartJS.astro';
+export function getStaticPaths() {
+  return [
+    { params: { regione: 'abruzzo', idRegione: '13' } },
+    { params: { regione: 'basilicata', idRegione: '17' } },
+    { params: { regione: 'calabria', idRegione: '18' } },
+    { params: { regione: 'campania', idRegione: '15' } },
+    { params: { regione: 'emilia-romagna', idRegione: '8' } },
+    { params: { regione: 'friuli-venezia-giulia', idRegione: '6' } },
+    { params: { regione: 'lazio', idRegione: '12' } },
+    { params: { regione: 'liguria', idRegione: '7' } },
+    { params: { regione: 'lombardia', idRegione: '3' } },
+    { params: { regione: 'marche', idRegione: '11' } },
+    { params: { regione: 'molise', idRegione: '14' } },
+    { params: { regione: 'pa-bolzano', idRegione: '21' } },
+    { params: { regione: 'pa-trento', idRegione: '22' } },
+    { params: { regione: 'piemonte', idRegione: '1' } },
+    { params: { regione: 'puglia', idRegione: '16' } },
+    { params: { regione: 'sardegna', idRegione: '20' } },
+    { params: { regione: 'sicilia', idRegione: '19' } },
+    { params: { regione: 'toscana', idRegione: '9' } },
+    { params: { regione: 'umbria', idRegione: '10' } },
+    { params: { regione: 'valle-d-aosta', idRegione: '2' } },
+    { params: { regione: 'veneto', idRegione: '5' } },
+  ];
+}
+const { regione } = Astro.params;
+const nomeRegione =
+  Astro.params.regione.charAt(0).toUpperCase() + Astro.params.regione.slice(1);
+---
+
+<BaseLayout>
+  <div class="container">
+    <h2 id="nome-regione"></h2>
+    <canvas id="tamponi"></canvas>
+  </div>
+</BaseLayout>
+<ChartJS />
+
+<script>
+  (async () => {
+    const response_data = await fetch(
+      'https://raw.githubusercontent.com/opencovidit/pcm-dpc-COVID-19/refs/heads/master/dati-json/dpc-covid19-ita-regioni.json'
+    );
+    const datiJson_data = await response_data.json();
+    const regioneData = datiJson_data.filter(
+      (item: { codice_regione: number }) => item.codice_regione === 13
+    );
+
+    const nomeRegione = regioneData[0].denominazione_regione;
+    document.getElementById('nome-regione').innerText = nomeRegione;
+
+    /* const nomeRegione = regioneData.denominazione_regione; */
+
+    const data = regioneData.map(function (e: { data: any }) {
+      return e.data;
+    });
+
+    const tamponi = regioneData.map(function (e: { tamponi: any }) {
+      return e.tamponi;
+    });
+
+    const ctx = document.getElementById('tamponi');
+
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: data,
+
+        datasets: [
+          {
+            label: 'Tamponi',
+            backgroundColor: '#2a87cc',
+            data: tamponi,
+            fill: false,
+          },
+        ],
+      },
+    });
+  })();
+</script>

@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TornaAllaHome from '../components/TornaAllaHome.astro';
+---
+
+<BaseLayout>
+  <div class="container px-3">
+    <div class="callout warning">
+      <div class="callout-inner">
+        <div class="callout-title">
+          <svg class="icon"
+            ><use href="/bootstrap-italia/dist/svg/sprites.svg#it-help-circle"
+            ></use></svg
+          >
+          <span class="visually-hidden">Errore 404</span>
+          <span class="text">Errore 404</span>
+        </div>
+        <p>
+          Sembra che la pagina o il contenuto che stavi cercando non esista o
+          sia stato rimosso.
+        </p>
+        <TornaAllaHome />
+      </div>
+    </div>
+  </div>
+</BaseLayout>

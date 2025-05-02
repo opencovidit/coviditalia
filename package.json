@@ -1,0 +1,21 @@
+{
+  "name": "coviditalia",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "prettier": "npx prettier . --write"
+  },
+  "dependencies": {
+    "@types/chart.js": "^2.9.41",
+    "astro": "^5.7.10",
+    "chart.js": "^4.4.9"
+  },
+  "devDependencies": {
+    "prettier": "3.5.3",
+    "prettier-plugin-astro": "0.14.1"
+  }
+}
