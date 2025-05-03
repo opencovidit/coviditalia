@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/macos,windows,linux,visualstudiocode,webstorm,webstorm+iml,webstorm+all,node,astro
-# Edit at https://www.toptal.com/developers/gitignore?templates=macos,windows,linux,visualstudiocode,webstorm,webstorm+iml,webstorm+all,node,astro
+### Exceptions ###
+project-planning/
 
 ### Astro ###
 # Gitignore template for Astro projects
@@ -466,5 +466,3 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-
-# End of https://www.toptal.com/developers/gitignore/api/macos,windows,linux,visualstudiocode,webstorm,webstorm+iml,webstorm+all,node,astro
