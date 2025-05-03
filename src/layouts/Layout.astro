@@ -1,8 +1,9 @@
 ---
 import 'bootstrap-italia/dist/css/bootstrap-italia.min.css';
 import BootstrapJS from '../components/BootstrapJS.astro';
-import Megamenu from '../components/Megamenu.astro';
+import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+import TornaSu from '../components/TornaSu.astro';
 ---
 
 <!doctype html>
@@ -18,13 +19,13 @@ import Footer from '../components/Footer.astro';
     <title>Covid Italia</title>
   </head>
   <body>
-    <!-- Megamenu -->
-    <Megamenu />
+    <!-- Navbar -->
+    <Navbar />
     <!-- Slot Start-->
     <slot />
     <!-- Slot Stop-->
-    <!-- Footer -->
     <Footer />
+    <TornaSu />
     <!-- BootstrapJS -->
     <BootstrapJS />
   </body>
