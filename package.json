@@ -6,9 +6,15 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "prettier": "npx prettier . --write"
   },
   "dependencies": {
-    "astro": "^5.7.10"
+    "astro": "^5.7.10",
+    "bootstrap-italia": "^2.14.0"
+  },
+  "devDependencies": {
+    "prettier": "3.5.3",
+    "prettier-plugin-astro": "0.14.1"
   }
 }
