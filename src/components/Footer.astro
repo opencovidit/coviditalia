@@ -16,7 +16,7 @@
                   ></use></svg
                 >
                 <div class="it-brand-text">
-                  <h2>Lorem Ipsum</h2>
+                  <h2>Covid Italia</h2>
                   <h3 class="d-none d-md-block">Inserire qui la tag line</h3>
                 </div>
               </a>
@@ -175,7 +175,6 @@
   </div>
   <div class="it-footer-small-prints clearfix">
     <div class="container">
-      <!-- <h3 class="visually-hidden">Sezione Link Utili</h3> -->
       <ul
         class="it-footer-small-prints-list list-inline mb-0 d-flex flex-column flex-md-row"
       >
@@ -193,4 +192,30 @@
       </ul>
     </div>
   </div>
+  <div class="it-footer-small-prints clearfix">
+    <div
+      class="container"
+      style="max-width: fit-content;
+      margin-left: auto;
+      margin-right: auto;"
+    >
+      <p class="mb-0 pb-2" style="color: #FFFFFF; font-size: 14px;">
+        © 2020 - <span id="current-year"></span> Tutti i diritti riservati | Covid
+        Italia, OpenCovid IT
+      </p>
+    </div>
+  </div>
 </footer>
+
+<script>
+  const currentYear = new Date().getFullYear().toString();
+  const currentYearElement = document.getElementById('current-year');
+  if (currentYearElement) {
+    currentYearElement.innerHTML = currentYear;
+  } else {
+    document.body.insertAdjacentHTML(
+      'beforeend',
+      `<span id="current-year">${currentYear}</span>`
+    );
+  }
+</script>
