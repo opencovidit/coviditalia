@@ -1,5 +1,15 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
 
-// https://astro.build/config
-export default defineConfig({});
+export default defineConfig({
+  vite: {
+    optimizeDeps: {
+      include: ['chart.js/auto'],
+    },
+    resolve: {
+      alias: {
+        '/bootstrap-italia/dist/svg/sprites.svg/':
+          '../node_modules/bootstrap-italia/dist/svg/sprites.svg/',
+      },
+    },
+  },
+});

@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ChartJS from '../components/ChartJS.astro';
+import { Chart } from '../../node_modules/chart.js/auto/auto.js';
 export function getStaticPaths() {
   return [
     { params: { regione: 'abruzzo' } },
@@ -14,7 +14,6 @@ const nomeRegione =
 ---
 
 <BaseLayout>
-  <ChartJS />
   <div class="container">
     <canvas id="tamponi"></canvas>
   </div>
