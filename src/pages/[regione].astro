@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ChartJS from '../components/ChartJS.astro';
+export function getStaticPaths() {
+  return [
+    { params: { regione: 'abruzzo' } },
+    { params: { regione: 'calabria' } },
+    { params: { regione: 'molise' } },
+  ];
+}
+const { regione } = Astro.params;
+const nomeRegione =
+  Astro.params.regione.charAt(0).toUpperCase() + Astro.params.regione.slice(1);
+---
+
+<BaseLayout>
+  <ChartJS />
+  <div class="container">
+    <canvas id="tamponi"></canvas>
+  </div>
+</BaseLayout>
+
+<script>
+  (async () => {
+    const response_data = await fetch(
+      'https://raw.githubusercontent.com/opencovidit/pcm-dpc-COVID-19/refs/heads/master/dati-json/dpc-covid19-ita-regioni.json'
+    );
+    const datiJson_data = await response_data.json();
+    const Abruzzo = datiJson_data.filter(
+      (item: { denominazione_regione: string }) =>
+        item.denominazione_regione === 'Abruzzo'
+    );
+    const data = Abruzzo.map(function (e: { data: any }) {
+      return e.data;
+    });
+
+    const tamponi = Abruzzo.map(function (e: { tamponi: any }) {
+      return e.tamponi;
+    });
+
+    const ctx = document.getElementById('tamponi');
+
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: data,
+
+        datasets: [
+          {
+            label: 'Nuovi positivi',
+            backgroundColor: '#2a87cc',
+            data: tamponi,
+            fill: false,
+          },
+        ],
+      },
+    });
+  })();
+</script>
