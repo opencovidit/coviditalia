@@ -11,7 +11,8 @@
   },
   "dependencies": {
     "astro": "^5.7.10",
-    "bootstrap-italia": "^2.14.0"
+    "bootstrap-italia": "^2.14.0",
+    "chart.js": "^4.4.9"
   },
   "devDependencies": {
     "prettier": "3.5.3",
