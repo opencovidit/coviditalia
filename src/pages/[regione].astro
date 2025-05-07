@@ -4,8 +4,26 @@ import ChartJS from '../components/ChartJS.astro';
 export function getStaticPaths() {
   return [
     { params: { regione: 'abruzzo' } },
+    { params: { regione: 'basilicata' } },
     { params: { regione: 'calabria' } },
+    { params: { regione: 'campania' } },
+    { params: { regione: 'emilia-romagna' } },
+    { params: { regione: 'friuli-venezia-giulia' } },
+    { params: { regione: 'lazio' } },
+    { params: { regione: 'liguria' } },
+    { params: { regione: 'lombardia' } },
+    { params: { regione: 'marche' } },
     { params: { regione: 'molise' } },
+    { params: { regione: 'pa-bolzano' } },
+    { params: { regione: 'pa-trento' } },
+    { params: { regione: 'piemonte' } },
+    { params: { regione: 'puglia' } },
+    { params: { regione: 'sardegna' } },
+    { params: { regione: 'sicilia' } },
+    { params: { regione: 'toscana' } },
+    { params: { regione: 'umbria' } },
+    { params: { regione: 'valle-d-aosta' } },
+    { params: { regione: 'veneto' } },
   ];
 }
 const { regione } = Astro.params;
