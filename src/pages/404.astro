@@ -4,9 +4,23 @@ import TornaAllaHome from '../components/TornaAllaHome.astro';
 ---
 
 <BaseLayout>
-  <div class="container" style="margin-top: 50px; margin-bottom: 50px;">
-    <h1 style="text-align:center; margin-top: 20px;">Error 404</h1>
-    <h2 style="text-align:center; margin-bottom: 30px;">Page not found</h2>
-    <TornaAllaHome />
+  <div class="container px-3">
+    <div class="callout warning">
+      <div class="callout-inner">
+        <div class="callout-title">
+          <svg class="icon"
+            ><use href="/bootstrap-italia/dist/svg/sprites.svg#it-help-circle"
+            ></use></svg
+          >
+          <span class="visually-hidden">Errore 404</span>
+          <span class="text">Errore 404</span>
+        </div>
+        <p>
+          Sembra che la pagina o il contenuto che stavi cercando non esista o
+          sia stato rimosso.
+        </p>
+        <TornaAllaHome />
+      </div>
+    </div>
   </div>
 </BaseLayout>
