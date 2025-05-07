@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { Chart } from '../../node_modules/chart.js/auto/auto.js';
+import ChartJS from '../components/ChartJS.astro';
 export function getStaticPaths() {
   return [
     { params: { regione: 'abruzzo' } },
@@ -15,10 +15,11 @@ const nomeRegione =
 
 <BaseLayout>
   <div class="container">
-    <h2>{nomeRegione}</h2>
+    <h2 id="nome-regione"></h2>
     <canvas id="tamponi"></canvas>
   </div>
 </BaseLayout>
+<ChartJS />
 
 <script>
   (async () => {
@@ -26,15 +27,20 @@ const nomeRegione =
       'https://raw.githubusercontent.com/opencovidit/pcm-dpc-COVID-19/refs/heads/master/dati-json/dpc-covid19-ita-regioni.json'
     );
     const datiJson_data = await response_data.json();
-    const Abruzzo = datiJson_data.filter(
-      (item: { denominazione_regione: string }) =>
-        item.denominazione_regione === 'Abruzzo'
+    const regioneData = datiJson_data.filter(
+      (item: { codice_regione: number }) => item.codice_regione === 13
     );
-    const data = Abruzzo.map(function (e: { data: any }) {
+
+    const nomeRegione = regioneData[0].denominazione_regione;
+    document.getElementById('nome-regione').innerText = nomeRegione;
+
+    /* const nomeRegione = regioneData.denominazione_regione; */
+
+    const data = regioneData.map(function (e: { data: any }) {
       return e.data;
     });
 
-    const tamponi = Abruzzo.map(function (e: { tamponi: any }) {
+    const tamponi = regioneData.map(function (e: { tamponi: any }) {
       return e.tamponi;
     });
 
@@ -47,7 +53,7 @@ const nomeRegione =
 
         datasets: [
           {
-            label: 'Nuovi positivi',
+            label: 'Tamponi',
             backgroundColor: '#2a87cc',
             data: tamponi,
             fill: false,
