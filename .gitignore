@@ -1,5 +1,6 @@
-### Exceptions ###
+### Personal ###
 project-planning/
+
 
 ### Astro ###
 # Gitignore template for Astro projects
@@ -649,3 +650,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+### Exceptions ###
+!public/bootstrap-italia/dist
