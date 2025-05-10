@@ -1,6 +1,8 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
+  site: 'https://opencovidit.github.io/coviditalia/',
+  base: '/coviditalia/',
   vite: {
     optimizeDeps: {
       include: ['chart.js/auto'],
